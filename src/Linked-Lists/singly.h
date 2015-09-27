@@ -109,6 +109,36 @@ T list<T>::pop_back()
 }
 
 template<typename T>
+void list<T>::delete_node(T _data)
+{
+    if(head != nullptr) { // list is not empty
+        if(head == tail && _data == head->data) {
+            delete head;
+            head = nullptr;
+            tail = nullptr;
+        }
+        else if(_data == head->data) { // if more than one node in list
+            node* tmp = head;
+            head = head->next;
+            delete tmp;
+        }
+        else {
+            node *p, *tmp;
+            for(p = head, tmp = head->next;
+                tmp != nullptr && (tmp->data == _data);
+                p = p->next, tmp = tmp->next);
+            if(tmp != nullptr) {
+                p->next = tmp->next;
+                if(tmp == tail) {
+                    tail = p;
+                }
+                delete tmp;
+            }
+        }
+    }
+}
+
+template<typename T>
 bool list<T>::find (T _data) const
 {
     node* tmp;

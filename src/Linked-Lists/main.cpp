@@ -10,4 +10,10 @@ int main()
     for (;!sl.is_empty();) {
         std::cout << sl.pop_front() << std::endl;
     }
+    if (sl.find(100)) {
+        sl.delete_node(100);
+    }
+    else {
+        std::cout << 100 << " not found\n";
+    }
 }
