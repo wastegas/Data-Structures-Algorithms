@@ -76,6 +76,9 @@ void list<T>::add_to_tail(T _data)
 template<typename T>
 T list<T>::pop_front()
 {
+    if(is_empty()) { // make sure not an empty list
+        throw("Empty list");
+    }
     T _data = head->data;
     node* tmp = head;
     if(head == tail) { // only one entry in list
@@ -92,6 +95,9 @@ T list<T>::pop_front()
 template<typename T>
 T list<T>::pop_back()
 {
+    if(is_empty()) { // make sure list is not empty
+        throw("List is empty");
+    }
     T _data = tail->data;
     if(head == tail) { // only one entry in list
         delete head;
