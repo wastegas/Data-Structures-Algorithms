@@ -10,8 +10,8 @@ namespace singly
         list();
         ~list();
         int is_empty();
-        void add_to_head(T);
-        void add_to_tail(T);
+        void add_to_head(const T&);
+        void add_to_tail(const T&);
         T pop_front();
         T pop_back();
         void delete_node(T);
@@ -21,7 +21,7 @@ namespace singly
         {
             node() 
                 : next{nullptr}{}
-            node(T _data, node* p=nullptr)
+            node(const T& _data, node* p=nullptr)
                 : data{_data}, next{p}{}
             T data;
             node* next;
@@ -54,7 +54,7 @@ namespace singly
     }
 
     template<typename T>
-    void list<T>::add_to_head(T _data)
+    void list<T>::add_to_head(const T& _data)
     {
         head = new node(_data, head);
         if(tail == nullptr) {
@@ -63,7 +63,7 @@ namespace singly
     }
 
     template<typename T>
-    void list<T>::add_to_tail(T _data)
+    void list<T>::add_to_tail(const T& _data)
     {
         if(tail != nullptr) { // list is not empty
             tail->next = new node(_data);
